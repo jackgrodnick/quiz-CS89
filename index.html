@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Multiple Choice Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .question { margin-bottom: 15px; }
+        .result { font-weight: bold; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h2>Simple Multiple Choice Test</h2>
+    
+    <form id="quizForm">
+        <div class="question">
+            <p>1. What is the capital of France?</p>
+            <input type="radio" name="q1" value="a"> a) Berlin<br>
+            <input type="radio" name="q1" value="b"> b) Madrid<br>
+            <input type="radio" name="q1" value="c"> c) Paris<br>
+        </div>
+        
+        <div class="question">
+            <p>2. What is 2 + 2?</p>
+            <input type="radio" name="q2" value="a"> a) 3<br>
+            <input type="radio" name="q2" value="b"> b) 4<br>
+            <input type="radio" name="q2" value="c"> c) 5<br>
+        </div>
+        
+        <div class="question">
+            <p>3. Who wrote 'To Kill a Mockingbird'?</p>
+            <input type="radio" name="q3" value="a"> a) Harper Lee<br>
+            <input type="radio" name="q3" value="b"> b) J.K. Rowling<br>
+            <input type="radio" name="q3" value="c"> c) Mark Twain<br>
+        </div>
+        
+        <button type="button" onclick="checkAnswers()">Submit</button>
+    </form>
+    
+    <p class="result" id="result"></p>
+    
+    <script>
+        function checkAnswers() {
+            let score = 0;
+            const answers = { q1: "c", q2: "b", q3: "a" };
+            
+            for (let key in answers) {
+                let selected = document.querySelector(`input[name="${key}"]:checked`);
+                if (selected && selected.value === answers[key]) {
+                    score++;
+                }
+            }
+            
+            document.getElementById("result").innerText = `You got ${score} out of 3 correct.`;
+        }
+    </script>
+</body>
+</html>
